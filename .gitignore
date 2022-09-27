@@ -174,4 +174,8 @@ dist
 # SvelteKit build / generate output
 .svelte-kit
 
+
+# Repo ralted
+uploads
+
 # End of https://www.toptal.com/developers/gitignore/api/macos,node
