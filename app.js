@@ -20,7 +20,7 @@ app.get("/", function (req, res) {
   res.send(
     '<form method="post" action="/upload" enctype="multipart/form-data">' +
       '<p>Title: <input type="text" name="title" /></p>' +
-      '<p>Image: <input type="file" name="companyLogo" /></p>' +
+      '<p>Image: <input type="file" name="file" /></p>' +
       '<p><input type="submit" value="Upload" /></p>' +
       "</form>"
   );
@@ -38,7 +38,6 @@ app.post("/upload", function (req, res) {
   res.setHeader("Access-Control-Allow-Origin", "*");
   let sampleFile;
   let uploadPath;
-  console.log("++++", req.files);
 
   if (!req.files || Object.keys(req.files).length === 0) {
     res.status(400).send("No files were uploaded.");
@@ -47,7 +46,8 @@ app.post("/upload", function (req, res) {
 
   console.log("req.files: __: ", req.files); // eslint-disable-line
 
-  sampleFile = req.files.companyLogo;
+  // "file" is the name of input in the form <input type="file" name="file" />
+  sampleFile = req.files.file;
 
   uploadPath = __dirname + "/uploads/" + sampleFile.name;
   console.log("uploadPath ====", uploadPath);
